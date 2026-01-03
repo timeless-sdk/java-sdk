@@ -101,11 +101,11 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/timeless-sdk/java-sdk")
             credentials {
-                username = System.getenv("GITHUB_ACTOR") 
-                    ?: System.getenv("GITHUB_USERNAME") 
+                username = System.getenv("GITHUB_ACTOR")
+                    ?: System.getenv("GITHUB_USERNAME")
                     ?: (project.findProperty("gpr.user") as String?)
                     ?: ""
-                password = System.getenv("GITHUB_TOKEN") 
+                password = System.getenv("GITHUB_TOKEN")
                     ?: (project.findProperty("gpr.key") as String?)
                     ?: ""
             }
