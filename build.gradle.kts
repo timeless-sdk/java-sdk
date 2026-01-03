@@ -4,7 +4,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "net.timeless-sdk"
+group = "net.timelesspay"
 version = "0.1.0-beta"
 
 java {
@@ -67,7 +67,7 @@ publishing {
             from(components["java"])
 
             groupId = project.group.toString()
-            artifactId = "timeless-sdk"
+            artifactId = "sdk"
             version = project.version.toString()
 
             pom {
