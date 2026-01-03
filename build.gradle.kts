@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("com.diffplug.spotless") version "6.25.0"
+    id("maven-publish")
 }
 
 group = "net.timeless-sdk"
@@ -57,5 +58,46 @@ spotless {
     kotlinGradle {
         target("*.gradle.kts")
         ktlint()
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
+
+            pom {
+                name.set("TimelessPay SDK")
+                description.set("Java SDK for TimelessPay Payment Gateway Service")
+                url.set("https://github.com/your-org/timeless-sdk")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("timeless")
+                        name.set("TimelessPay Team")
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY")}")
+            credentials {
+                username = System.getenv("USERNAME") ?: System.getenv("GITHUB_ACTOR")
+                password = System.getenv("TOKEN") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
