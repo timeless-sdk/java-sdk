@@ -4,9 +4,9 @@ plugins {
     id("maven-publish")
 }
 
-// For JitPack: automatically uses com.github.timeless-sdk:java-sdk:VERSION
-// For GitHub Packages: uses net.timelesspay:sdk:VERSION
-group = "net.timelesspay"
+// For JitPack: com.github.timeless-sdk:java-sdk:VERSION
+// For GitHub Packages: com.github.timeless-sdk:sdk:VERSION
+group = "com.github.timeless-sdk"
 version = "0.1.0-beta"
 
 java {
