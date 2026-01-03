@@ -79,7 +79,7 @@ publishing {
             pom {
                 name.set("TimelessPay SDK")
                 description.set("Java SDK for TimelessPay Payment Gateway Service")
-                url.set("https://github.com/your-org/timeless-sdk")
+                url.set("https://github.com/timeless-sdk/java-sdk")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -99,10 +99,10 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY")}")
+            url = uri("https://maven.pkg.github.com/timeless-sdk/java-sdk")
             credentials {
-                username = System.getenv("USERNAME") ?: System.getenv("GITHUB_ACTOR")
-                password = System.getenv("TOKEN") ?: System.getenv("GITHUB_TOKEN")
+                username = System.getenv("GITHUB_ACTOR") ?: System.getenv("GITHUB_USERNAME") ?: project.findProperty("gpr.user") as String?
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key") as String?
             }
         }
     }
